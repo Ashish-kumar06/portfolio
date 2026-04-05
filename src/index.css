@@ -6,26 +6,24 @@
 }
 
 :root {
-  /* Colors */
-  --clr-bg: #0a0f1e;
-  --clr-bg-card: #111827;
-  --clr-bg-glass: rgba(255, 255, 255, 0.04);
-  --clr-primary: #6c63ff;
-  --clr-primary-light: #a78bfa;
-  --clr-secondary: #06b6d4;
-  --clr-accent: #f472b6;
-  --clr-text: #e2e8f0;
-  --clr-text-muted: #94a3b8;
-  --clr-border: rgba(255, 255, 255, 0.08);
+  /* Colors - Cyberpunk / Anime UI */
+  --clr-bg: #030614;
+  --clr-bg-card: rgba(10, 15, 30, 0.7);
+  --clr-bg-glass: rgba(12, 18, 36, 0.6);
+  --clr-primary: #00f0ff;      /* Cyberpunk Cyan */
+  --clr-primary-light: #66f5ff;
+  --clr-secondary: #ff003c;    /* Cyberpunk Red/Pink */
+  --clr-accent: #bf00ff;       /* Magenta */
+  --clr-text: #f0f4f8;
+  --clr-text-muted: #8b9bb4;
+  --clr-border: rgba(0, 240, 255, 0.2);
 
   /* Gradients */
-  --grad-primary: linear-gradient(135deg, #6c63ff 0%, #06b6d4 100%);
-  --grad-card: linear-gradient(145deg, rgba(108,99,255,0.12), rgba(6,182,212,0.06));
-  --grad-hero: radial-gradient(ellipse at 60% 40%, rgba(108,99,255,0.18) 0%, transparent 70%),
-               radial-gradient(ellipse at 20% 80%, rgba(6,182,212,0.12) 0%, transparent 60%);
+  --grad-primary: linear-gradient(135deg, var(--clr-primary) 0%, var(--clr-secondary) 100%);
+  --grad-card: linear-gradient(145deg, rgba(0, 240, 255, 0.08), rgba(255, 0, 60, 0.04));
 
   /* Fonts */
-  --font-heading: 'Outfit', sans-serif;
+  --font-heading: 'Outfit', 'Orbitron', sans-serif;
   --font-body: 'Inter', sans-serif;
 
   /* Spacing */
@@ -33,33 +31,36 @@
   --container-max: 1100px;
 
   /* Effects */
-  --shadow-card: 0 8px 32px rgba(0,0,0,0.35);
-  --radius: 16px;
+  --shadow-card: 0 8px 32px rgba(0,0,0,0.5);
+  --shadow-neon: 0 0 15px rgba(0,240,255,0.4), 0 0 30px rgba(0,240,255,0.2);
+  --radius: 4px; /* Sharper corners for game UI */
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --clip-btn: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
   
-  --clr-nav-bg: rgba(10, 15, 30, 0.85);
-  --clr-nav-mobile: rgba(10, 15, 30, 0.97);
-  --clr-footer-bg: rgba(10, 15, 30, 0.6);
-  --clr-hover-bg: rgba(255,255,255,0.06);
+  --clr-nav-bg: rgba(3, 6, 20, 0.85);
+  --clr-nav-mobile: rgba(3, 6, 20, 0.98);
+  --clr-footer-bg: rgba(3, 6, 20, 0.8);
+  --clr-hover-bg: rgba(0, 240, 255, 0.1);
 }
 
 [data-theme='light'] {
-  --clr-bg: #f8fafc;
-  --clr-bg-card: #ffffff;
-  --clr-bg-glass: rgba(255, 255, 255, 0.8);
-  --clr-primary: #5a52df;
-  --clr-primary-light: #8b5cf6;
-  --clr-secondary: #0ea5e9;
-  --clr-text: #0f172a;
-  --clr-text-muted: #475569;
-  --clr-border: rgba(0, 0, 0, 0.08);
+  --clr-bg: #e0e5ec;
+  --clr-bg-card: rgba(255, 255, 255, 0.85);
+  --clr-bg-glass: rgba(255, 255, 255, 0.7);
+  --clr-primary: #005bb5;
+  --clr-primary-light: #0084ff;
+  --clr-secondary: #d40032;
+  --clr-text: #1a202c;
+  --clr-text-muted: #4a5568;
+  --clr-border: rgba(0, 91, 181, 0.2);
 
-  --clr-nav-bg: rgba(248, 250, 252, 0.85);
-  --clr-nav-mobile: rgba(248, 250, 252, 0.97);
-  --clr-footer-bg: rgba(248, 250, 252, 0.8);
-  --clr-hover-bg: rgba(0, 0, 0, 0.05);
+  --clr-nav-bg: rgba(224, 229, 236, 0.85);
+  --clr-nav-mobile: rgba(224, 229, 236, 0.97);
+  --clr-footer-bg: rgba(224, 229, 236, 0.8);
+  --clr-hover-bg: rgba(0, 91, 181, 0.1);
 
-  --grad-card: linear-gradient(145deg, rgba(108,99,255,0.06), rgba(6,182,212,0.03));
+  --grad-card: linear-gradient(145deg, rgba(0, 91, 181, 0.08), rgba(212, 0, 50, 0.04));
+  --shadow-neon: 0 0 15px rgba(0,91,181,0.2);
 }
 
 html {
@@ -69,6 +70,11 @@ html {
 
 body {
   background-color: var(--clr-bg);
+  background-image: url('/cyberpunk-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-blend-mode: overlay;
   color: var(--clr-text);
   font-family: var(--font-body);
   line-height: 1.6;
@@ -138,38 +144,64 @@ body {
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.75rem;
-  border-radius: 50px;
-  font-weight: 600;
+  padding: 0.75rem 2rem;
+  font-weight: 700;
   font-size: 0.95rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   cursor: pointer;
   transition: var(--transition);
   border: none;
   font-family: var(--font-heading);
   text-decoration: none;
+  clip-path: var(--clip-btn);
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary {
   background: var(--grad-primary);
   color: #fff;
-  box-shadow: 0 4px 20px rgba(108, 99, 255, 0.4);
+  text-shadow: 0 0 5px rgba(255,255,255,0.5);
 }
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(108, 99, 255, 0.55);
+  transform: scale(1.02);
+  box-shadow: var(--shadow-neon);
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: 0.5s;
+}
+.btn-primary:hover::before {
+  left: 100%;
 }
 
 .btn-outline {
-  background: transparent;
-  color: var(--clr-text);
-  border: 1.5px solid var(--clr-border);
+  background: rgba(0,0,0,0.5);
+  color: var(--clr-primary);
+  border: 1px solid var(--clr-primary);
+  position: relative;
+}
+.btn-outline::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: var(--clr-bg);
+  clip-path: var(--clip-btn);
+  z-index: -1;
+  transition: var(--transition);
 }
 .btn-outline:hover {
-  border-color: var(--clr-primary);
-  color: var(--clr-primary-light);
-  background: rgba(108,99,255,0.08);
-  transform: translateY(-2px);
+  color: #fff;
+  box-shadow: 0 0 15px var(--clr-primary);
+}
+.btn-outline:hover::after {
+  background: var(--clr-primary);
 }
 
 /* ===== CARD ===== */

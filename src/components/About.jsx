@@ -31,14 +31,15 @@ export default function About() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
           >
-            <div className="about__img-wrap">
-              <div className="about__placeholder">
-                <span>🧑‍💻</span>
-                <p>Ashish V Kumar</p>
-                <small>Software Developer</small>
-              </div>
-              <div className="about__img-badge">
-                <span>💼</span> Available for work
+            <div className="about__img-wrap cyber-frame">
+              <img 
+                src="/anime-about-placeholder.png" 
+                alt="Ashish V Kumar" 
+                className="about-anime-img" 
+                style={{ mixBlendMode: 'screen', width: '100%', height: 'auto', borderRadius: '4px', filter: 'drop-shadow(0 0 20px rgba(0,240,255,0.3))' }}
+              />
+              <div className="about__img-badge cyber-glitch-badge">
+                <span>⚡</span> SYSTEM ACTIVE
               </div>
             </div>
 

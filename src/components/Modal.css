@@ -19,10 +19,11 @@
 }
 
 .modal-content {
-  background: var(--clr-bg);
-  border: 1px solid var(--clr-border);
-  border-radius: calc(var(--radius) * 1.5);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  background: var(--clr-bg-card);
+  border: 1px solid var(--clr-primary);
+  border-left: 4px solid var(--clr-primary);
+  border-right: 4px solid var(--clr-secondary);
+  box-shadow: var(--shadow-neon), inset 0 0 50px rgba(0, 0, 0, 0.8);
   width: 100%;
   max-width: 1200px;
   max-height: 90vh;
@@ -31,6 +32,18 @@
   position: relative;
   pointer-events: auto;
   overflow: hidden;
+  clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+  backdrop-filter: blur(10px);
+}
+
+.modal-content::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: linear-gradient(rgba(0,240,255,0.02) 1px, transparent 1px);
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .modal-close {
@@ -39,10 +52,9 @@
   right: 1.5rem;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--clr-border);
-  color: var(--clr-text);
+  background: rgba(255, 0, 60, 0.1);
+  border: 1px solid var(--clr-secondary);
+  color: var(--clr-secondary);
   font-size: 1.5rem;
   display: flex;
   align-items: center;
@@ -50,13 +62,14 @@
   cursor: pointer;
   z-index: 10;
   transition: var(--transition);
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
 }
 
 .modal-close:hover {
-  background: rgba(244, 114, 182, 0.1);
-  color: var(--clr-accent);
-  border-color: rgba(244, 114, 182, 0.3);
-  transform: rotate(90deg);
+  background: var(--clr-secondary);
+  color: #fff;
+  box-shadow: 0 0 15px var(--clr-secondary);
+  transform: rotate(90deg) scale(1.1);
 }
 
 .modal-body {

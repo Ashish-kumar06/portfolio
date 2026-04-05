@@ -21,9 +21,10 @@ const itemVariants = {
 export default function Hero({ openPopup }) {
   return (
     <section id="home" className="hero">
-      {/* Ambient blobs */}
-      <div className="hero-blob hero-blob--1" />
-      <div className="hero-blob hero-blob--2" />
+      {/* Cyberpunk decor elements */}
+      <div className="hero-cyber-line line-1" />
+      <div className="hero-cyber-line line-2" />
+      <div className="hero-bg-text">ENGINEER</div>
       <div className="hero-grid" />
 
       <div className="container hero__content">
@@ -71,38 +72,34 @@ export default function Hero({ openPopup }) {
           </motion.div>
         </motion.div>
 
-        {/* Avatar side */}
+        {/* Anime Character Slot */}
         <motion.div
-          className="hero__avatar-wrap"
-          initial={{ opacity: 0, scale: 0.8, x: 40 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
+          className="hero__anime-wrap"
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
         >
-          <div className="hero__avatar">
-            <div className="avatar-ring" />
-            <div className="avatar-inner">
-              <span className="avatar-emoji">🧑‍💻</span>
-            </div>
+          <div className="hero__anime-slot">
+            <div className="slot-frame"></div>
+            {/* User can change the imgSrc here to their own transparent character PNG */}
+            <img 
+              src="/anime-hero-placeholder.png" 
+              alt="Anime Hero" 
+              className="anime-img" 
+              style={{ mixBlendMode: 'screen' }} 
+            />
+            {/* Stylized UI overlays on the image */}
             <motion.div
-              className="float-badge float-badge--1"
-              animate={{ y: [0, -8, 0] }}
-              transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut' }}
+              className="cyber-badge badge--top"
+              animate={{ opacity: [0.7, 1, 0.7] }}
+              transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
             >
-              <span>🅰️</span> Angular
+              SYS.DEV_
             </motion.div>
             <motion.div
-              className="float-badge float-badge--2"
-              animate={{ y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
+              className="cyber-badge badge--bottom"
             >
-              <span>☕</span> SpringBoot
-            </motion.div>
-            <motion.div
-              className="float-badge float-badge--3"
-              animate={{ y: [0, -6, 0] }}
-              transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 0.5 }}
-            >
-              <span>⭐</span> 2+ Years Exp
+              lvl.99
             </motion.div>
           </div>
         </motion.div>
